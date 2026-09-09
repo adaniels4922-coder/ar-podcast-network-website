@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/private/tmp/claude-501/-Users-alexis-Desktop-AR-Podcast-Network-Website/df59859a-ffe6-4b01-857f-1c6570ce7d3a/scratchpad/serve.py"],
+      "port": 4173
+    }
+  ]
+}

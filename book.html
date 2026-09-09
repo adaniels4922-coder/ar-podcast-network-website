@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Now — Studio B</title>
+  <meta name="description" content="Book Studio B: pick your rate, choose a time, then pay to confirm your session.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="book">
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="brand">
+        <span class="brand-name">AR Podcast Network</span>
+        <span class="brand-room">Studio B</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="pricing.html" data-page="pricing">Pricing</a></li>
+        <li><a href="book.html" data-page="book">Book Now</a></li>
+        <li><a href="about.html" data-page="about">About</a></li>
+        <li><a href="gallery.html" data-page="gallery">Gallery</a></li>
+        <li><a href="faq.html" data-page="faq">FAQ</a></li>
+        <li><a href="contact.html" data-page="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Book Studio B</h1>
+      <p>Three quick steps: choose your rate, pick a time, then pay to confirm. Open Mon–Fri, 9:00am–8:00pm.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-title">
+            <span class="step-number">1</span>
+            <h3>Tell us who's booking</h3>
+          </div>
+          <p class="text-muted">This determines your hourly rate. Choose the option that honestly describes this session.</p>
+
+          <div class="form-field">
+            <label for="rate-select">I'm booking as a...</label>
+            <select id="rate-select" class="select">
+              <option value="">Select one</option>
+              <option value="individual">Individual / Creator</option>
+              <option value="business">Business</option>
+            </select>
+          </div>
+
+          <div class="rate-display">
+            Your rate: <span id="rate-amount" class="rate-amount">Select an option above to see your rate</span>
+          </div>
+
+          <label class="checkbox-field">
+            <input type="checkbox" id="rate-confirm">
+            <span>I confirm the option selected above accurately reflects who I'm booking Studio B for. I understand this determines my rate and that AR Podcast Network relies on this statement in good faith.</span>
+          </label>
+        </div>
+
+        <div class="step">
+          <div class="step-title">
+            <span class="step-number">2</span>
+            <h3>Pick your time</h3>
+          </div>
+          <p class="text-muted">Choose an open slot below. This reserves your time on our calendar — you'll confirm it with payment in Step 3.</p>
+          <iframe id="calendar-embed" class="calendar-embed" title="Studio B booking calendar" frameborder="0"></iframe>
+          <div class="hint-box">
+            Note the exact date and time you select — you'll be asked to re-enter it in Step 3 so we can match your payment to your reservation.
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-title">
+            <span class="step-number">3</span>
+            <h3>Pay to confirm</h3>
+          </div>
+          <p class="text-muted">Your slot is held for <strong>24 hours</strong>. If payment isn't received in that window, it's automatically released back to the calendar for others to book. Click the button that matches your rate from Step 1.</p>
+
+          <div id="pay-buttons" class="pay-buttons">
+            <a id="pay-individual" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="display:none;">Pay $100/hr — Individual/Creator</a>
+            <a id="pay-business" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="display:none;">Pay $150/hr — Business</a>
+          </div>
+
+          <div class="hint-box">
+            On the payment page, please enter the exact date and time you selected in Step 2 — this is how we confirm which reservation your payment belongs to.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="policy-box" style="margin-top:32px;">
+        <h3>Cancellation policy</h3>
+        <p style="margin-bottom:0;">Full refund if cancelled 48+ hours before your session. No refund inside 48 hours. See full details on the <a href="pricing.html">Pricing page</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>AR Podcast Network — Studio B</h4>
+          <p style="color: rgba(255,255,255,0.75);">A dedicated podcast recording room built for creators and businesses to record clean, professional episodes.</p>
+        </div>
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="book.html">Book Now</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@ambitiousroots.com">hello@ambitiousroots.com</a></li>
+            <li><a href="contact.html">Contact page</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> AR Podcast Network. All rights reserved.</span>
+        <span>Mon–Fri, 9:00am–8:00pm</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
