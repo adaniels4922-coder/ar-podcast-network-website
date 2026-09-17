@@ -298,9 +298,23 @@ p {
   margin: 5px 0;
 }
 
+.mobile-cta-item {
+  display: none;
+}
+
 @media (max-width: 860px) {
   .nav-toggle { display: block; }
   .nav-cta { display: none; }
+
+  .mobile-cta-item {
+    display: block;
+    padding: 16px 24px;
+  }
+
+  .mobile-cta-item .btn {
+    width: 100%;
+    text-align: center;
+  }
 
   .nav-links {
     position: absolute;
