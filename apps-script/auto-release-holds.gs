@@ -78,9 +78,33 @@ function extractBookingTimeText(session) {
 }
 
 /**
- * Looks through upcoming Studio B calendar holds for one whose title or
- * description contains the date/time text the client provided, and tags
- * it as paid. If nothing matches, logs it so you can check manually.
+ * The site's "Confirm your time" step appends a machine-readable fragment
+ * like "(2026-01-15T14:00)" after the human-readable date/time, specifically
+ * so this function doesn't have to guess at free-text formatting. Pulls
+ * that fragment out and returns it as a Date, or null if it's missing
+ * (e.g. the customer edited the copied text before pasting it).
+ */
+function extractStructuredDate(clientText) {
+  if (!clientText) return null;
+  const match = clientText.match(/\((\d{4}-\d{2}-\d{2}T\d{2}:\d{2})\)/);
+  if (!match) return null;
+  const parsed = new Date(match[1]);
+  return isNaN(parsed.getTime()) ? null : parsed;
+}
+
+/**
+ * Looks through upcoming Studio B calendar holds for the one matching the
+ * client-provided date/time, and tags it as paid.
+ *
+ * Prefers comparing actual start times (via the machine-readable fragment
+ * above, matched within a tolerance window — client and calendar clocks
+ * won't always agree to the second, and this also assumes the customer's
+ * browser and the studio's calendar are in the same timezone, which holds
+ * for a single-location business but is worth knowing about). Falls back
+ * to matching the raw text against the event title/description if the
+ * fragment is missing or unparseable.
+ *
+ * If nothing matches either way, logs it so you can check manually.
  */
 function markMatchingEventAsPaid(clientText, payerEmail) {
   const calendar = CalendarApp.getCalendarById(CALENDAR_ID);
@@ -88,16 +112,36 @@ function markMatchingEventAsPaid(clientText, payerEmail) {
   const searchWindowEnd = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000); // next 60 days
   const events = calendar.getEvents(now, searchWindowEnd);
 
+  const structuredDate = extractStructuredDate(clientText);
+  const toleranceMs = 90 * 60 * 1000; // 90 minutes, to absorb small clock/timezone drift
+
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
     const title = event.getTitle() || '';
-    const description = event.getDescription() || '';
-
     if (title.indexOf(PAID_PREFIX) === 0) continue; // already tagged paid
 
-    if (clientText && (title.indexOf(clientText) !== -1 || description.indexOf(clientText) !== -1)) {
-      event.setTitle(PAID_PREFIX + title);
-      return;
+    if (structuredDate) {
+      const diff = Math.abs(event.getStartTime().getTime() - structuredDate.getTime());
+      if (diff <= toleranceMs) {
+        event.setTitle(PAID_PREFIX + title);
+        return;
+      }
+    }
+  }
+
+  // Fallback: substring match against title/description (covers cases
+  // where the structured fragment is missing entirely).
+  if (!structuredDate) {
+    for (let i = 0; i < events.length; i++) {
+      const event = events[i];
+      const title = event.getTitle() || '';
+      const description = event.getDescription() || '';
+      if (title.indexOf(PAID_PREFIX) === 0) continue;
+
+      if (clientText && (title.indexOf(clientText) !== -1 || description.indexOf(clientText) !== -1)) {
+        event.setTitle(PAID_PREFIX + title);
+        return;
+      }
     }
   }
 

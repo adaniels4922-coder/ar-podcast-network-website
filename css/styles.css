@@ -631,6 +631,12 @@ p {
   font-size: 1.35rem;
 }
 
+#time-preview {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-primary-dark);
+}
+
 .checkbox-field {
   display: flex;
   align-items: flex-start;

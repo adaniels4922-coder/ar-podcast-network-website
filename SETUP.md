@@ -50,11 +50,27 @@ in Step 3.
      a required text field:
      - Key: `booking_date_time`
      - Label: "Date & time you selected on the booking calendar"
+     - Tell customers (in the field's helper text, if Stripe offers one):
+       "Paste the full confirmation line from Step 3 of our booking page,
+       including the text in parentheses."
+   - Under **"After payment"**, set the confirmation page to **redirect to
+     a URL** and enter: `https://ambitiousroots.com/booking-confirmed.html`
+     (or your `*.vercel.app` URL if the domain isn't connected yet — see
+     Step 4 below). This replaces Stripe's generic receipt page with a
+     branded AR Podcast Network confirmation page that's already built
+     into the site.
    - Save, then copy the resulting `https://buy.stripe.com/...` link.
 4. Repeat for the **Business link**: same steps, price $150.00.
 
 **Paste into the site:** open [js/config.js](js/config.js) and paste the
 two links into `stripePaymentLinkIndividual` and `stripePaymentLinkBusiness`.
+
+**Why the parentheses matter:** the booking page's "Confirm your time" step
+copies a line like `Thursday, January 15, 2026 at 2:00 PM (2026-01-15T14:00)`.
+The part in parentheses isn't for the customer to read — it's what the
+Apps Script automation (Step 3 below) uses to reliably match a payment to
+the right calendar hold, instead of guessing from free text. Encourage
+customers to paste the whole line, not just the friendly part.
 
 ---
 
@@ -105,6 +121,13 @@ single small room this is a reasonable tradeoff, but keep that webhook URL
 private, and check in on your calendar occasionally to make sure
 `[PAID]` tags look right.
 
+The matching logic prefers the machine-readable `(2026-01-15T14:00)` part
+of what the customer pastes, compared against each hold's actual start
+time (within a 90-minute tolerance window) — this is more reliable than
+the old plain-text search, but it does assume the customer's browser and
+your calendar are in the same timezone. If a customer books from far
+outside your timezone, double check the match manually.
+
 ---
 
 ## 4. Point ambitiousroots.com at Vercel
@@ -133,8 +156,10 @@ private, and check in on your calendar occasionally to make sure
       links (no `REPLACE_ME` left in the file)
 - [ ] Book a test slot yourself and pay with a
       [Stripe test card](https://stripe.com/docs/testing) (while Stripe is
-      in test mode) to confirm the whole flow works end to end, and that
-      the calendar event gets tagged `[PAID]`
+      in test mode) to confirm the whole flow works end to end: pick a
+      slot, use the "Confirm your time" step's Copy button, paste it into
+      Stripe, pay, land on the branded `booking-confirmed.html` page, and
+      see the calendar event get tagged `[PAID]` within a minute or so
 - [ ] Switch Stripe from test mode to live mode, and re-check the payment
       links still work (live mode has its own separate payment links —
       double check you copied the **live** link URLs, not the test ones)

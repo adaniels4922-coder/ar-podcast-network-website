@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Received — Studio B</title>
+  <meta name="description" content="Your Studio B payment was received.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="booking-confirmed">
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="brand">
+        <span class="brand-name">AR Podcast Network</span>
+        <span class="brand-room">Studio B</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="pricing.html" data-page="pricing">Pricing</a></li>
+        <li><a href="book.html" data-page="book">Book Now</a></li>
+        <li><a href="about.html" data-page="about">About</a></li>
+        <li><a href="gallery.html" data-page="gallery">Gallery</a></li>
+        <li><a href="faq.html" data-page="faq">FAQ</a></li>
+        <li><a href="contact.html" data-page="contact">Contact</a></li>
+      </ul>
+      <a href="book.html" class="btn btn-primary btn-pill nav-cta">Book Now</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <div class="container text-center" style="max-width:640px;">
+      <span class="eyebrow">Payment received</span>
+      <h1>You're booked — thank you.</h1>
+      <p class="text-muted" style="font-size:1.1rem;">
+        Your payment for Studio B went through successfully. Stripe will email you a payment receipt shortly.
+        Your reserved time slot is being matched to your payment and marked confirmed on our calendar — this
+        usually happens within a few minutes.
+      </p>
+
+      <div class="policy-box" style="text-align:left;margin-top:32px;">
+        <h3>What happens next</h3>
+        <p>You don't need to do anything else. If the date or time on your Stripe receipt doesn't match what
+          you booked, or you don't hear back from us and have questions, just reach out — we're glad to
+          double-check it for you.</p>
+        <p style="margin-bottom:0;">Full refund if you cancel 48+ hours before your session — see our
+          <a href="pricing.html">cancellation policy</a>.</p>
+      </div>
+
+      <div class="hero-actions" style="justify-content:center;margin-top:32px;">
+        <a href="contact.html" class="btn btn-outline btn-pill">Contact Us</a>
+        <a href="index.html" class="btn btn-primary btn-pill">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>AR Podcast Network — Studio B</h4>
+          <p style="color: rgba(255,255,255,0.75);">A dedicated podcast recording room built for creators and businesses to record clean, professional episodes.</p>
+        </div>
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="book.html">Book Now</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@ambitiousroots.com">hello@ambitiousroots.com</a></li>
+            <li><a href="contact.html">Contact page</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> AR Podcast Network. All rights reserved.</span>
+        <span>Mon–Fri, 9:00am–8:00pm</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

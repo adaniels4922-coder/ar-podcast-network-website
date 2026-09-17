@@ -38,7 +38,7 @@
   <section class="page-hero">
     <div class="container">
       <h1>Book Studio B</h1>
-      <p>Three quick steps: choose your rate, pick a time, then pay to confirm. Open Mon–Fri, 9:00am–8:00pm.</p>
+      <p>Four quick steps: choose your rate, pick a time, confirm it, then pay. Open Mon–Fri, 9:00am–8:00pm.</p>
     </div>
   </section>
 
@@ -77,16 +77,38 @@
             <span class="step-number">2</span>
             <h3>Pick your time</h3>
           </div>
-          <p class="text-muted">Choose an open slot below. This reserves your time on our calendar — you'll confirm it with payment in Step 3.</p>
+          <p class="text-muted">Choose an open slot below. This reserves your time on our calendar — you'll confirm it in Step 3 and pay in Step 4.</p>
           <iframe id="calendar-embed" class="calendar-embed" title="Studio B booking calendar" frameborder="0"></iframe>
           <div class="hint-box">
-            Note the exact date and time you select — you'll be asked to re-enter it in Step 3 so we can match your payment to your reservation.
+            Note the exact date and time you select — the next step gives you an easy way to carry it forward without retyping it from memory.
           </div>
         </div>
 
         <div class="step">
           <div class="step-title">
             <span class="step-number">3</span>
+            <h3>Confirm your time</h3>
+          </div>
+          <p class="text-muted">Re-enter the date and time you just selected on the calendar above. We'll format it for you — then just copy and paste it into the payment page in Step 4, instead of retyping it from memory.</p>
+
+          <div class="form-field">
+            <label for="confirm-date">Date</label>
+            <input type="date" id="confirm-date" class="select">
+          </div>
+          <div class="form-field">
+            <label for="confirm-time">Start time</label>
+            <input type="time" id="confirm-time" class="select">
+          </div>
+
+          <div class="rate-display">
+            <div id="time-preview">Fill in the date and time above to generate a copyable confirmation line.</div>
+            <button type="button" id="copy-time-btn" class="btn btn-outline btn-pill" style="margin-top:14px;" disabled>Copy to clipboard</button>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-title">
+            <span class="step-number">4</span>
             <h3>Pay to confirm</h3>
           </div>
           <p class="text-muted">Your slot is held for <strong>24 hours</strong>. If payment isn't received in that window, it's automatically released back to the calendar for others to book. Click the button that matches your rate from Step 1.</p>
@@ -97,7 +119,7 @@
           </div>
 
           <div class="hint-box">
-            On the payment page, please enter the exact date and time you selected in Step 2 — this is how we confirm which reservation your payment belongs to.
+            On the payment page, paste the confirmation line you copied in Step 3 into the date/time field — this is how we confirm which reservation your payment belongs to.
           </div>
         </div>
 
