@@ -727,15 +727,61 @@ p {
   margin: 0;
 }
 
-/* ---------- Gallery ---------- */
+/* ---------- Placeholder box (Gallery, testimonials, anywhere real
+   content is pending) ---------- */
 
-.gallery-placeholder {
+.placeholder-box {
   background: var(--color-bg-alt);
   border: 2px dashed var(--color-border);
   border-radius: var(--radius-lg);
   padding: 72px 32px;
   text-align: center;
   color: var(--color-text-muted);
+}
+
+/* ---------- Numbered process steps (How It Works) ---------- */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+  counter-reset: process;
+}
+
+.process-item {
+  text-align: center;
+}
+
+.process-item .step-number {
+  margin: 0 auto 18px;
+}
+
+.process-item h3 {
+  font-size: 1.15rem;
+}
+
+/* ---------- Mini pricing teaser ---------- */
+
+.mini-pricing-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+}
+
+.mini-pricing-item {
+  flex: 1;
+  min-width: 200px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+}
+
+.mini-pricing-item .price-tag {
+  font-size: 2rem;
+  margin: 6px 0 2px;
 }
 
 /* ---------- Contact ---------- */
