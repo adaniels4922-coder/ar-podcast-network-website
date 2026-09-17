@@ -18,7 +18,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <!--
     Organization schema — intentionally omits "address" and "telephone".
@@ -37,6 +37,8 @@
   </script>
 </head>
 <body data-page="home">
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <nav class="nav">
@@ -60,6 +62,8 @@
     </nav>
   </header>
 
+  <main id="main-content">
+
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
@@ -79,6 +83,9 @@
           .collage-item div's content with an <img src="assets/..." alt="...">
           (keep the "collage-item" class so the rounded corners, shadow, and
           tilt effect stay applied), and delete the .collage-label span.
+          This is above the fold and likely to be the page's largest visible
+          image (its load time affects the LCP performance metric) — do NOT
+          add loading="lazy" here; add fetchpriority="high" instead.
         -->
         <div class="hero-collage reveal">
           <div class="collage-item"><span class="collage-label">Studio B</span></div>
@@ -118,8 +125,10 @@
     SEE THE STUDIO — currently placeholder color blocks, same treatment as
     the hero collage. Once you have real Studio B photography, replace each
     .collage-item div's content with an <img src="assets/..." alt="descriptive
-    text"> (keep the "collage-item" class for the rounded corners/shadow),
-    and delete the .collage-label spans.
+    text" loading="lazy"> (keep the "collage-item" class for the rounded
+    corners/shadow), and delete the .collage-label spans. This section is
+    well below the fold, so loading="lazy" here is good for page speed
+    (unlike the hero collage above, which should stay eager).
   -->
   <section class="section section-alt" id="see-the-studio">
     <div class="container">
@@ -255,6 +264,8 @@
       <a href="book.html" class="btn btn-primary btn-pill">Book Studio B</a>
     </div>
   </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="container">

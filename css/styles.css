@@ -42,6 +42,34 @@
   box-sizing: border-box;
 }
 
+/* Visible on keyboard focus only — lets keyboard/screen-reader users jump
+   past the repeated header nav straight to page content. */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  z-index: 100;
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+  text-decoration: none;
+}
+
+/* A consistent, visible focus ring for keyboard navigation, without
+   adding an outline on mouse/touch clicks (:focus-visible handles that
+   distinction natively in modern browsers). */
+:focus-visible {
+  outline: 3px solid var(--color-accent-text);
+  outline-offset: 2px;
+}
+
 html {
   scroll-behavior: smooth;
 }
