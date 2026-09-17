@@ -16,6 +16,11 @@
   --color-accent: #C1552C;
   --color-accent-dark: #A5451F;
   --color-accent-soft: #F3DFCB;
+  /* Use for accent-colored TEXT (links, nav, eyebrows): #C1552C measures
+     ~4.27:1 on this background, just under WCAG AA's 4.5:1 for normal
+     text. This darker value measures ~5.7:1 and passes. Buttons/large
+     display text can keep --color-accent. */
+  --color-accent-text: #A5451F;
   --color-border: #E5DACB;
   --color-success-bg: #E9F1EA;
   --color-success-text: #2F4A3C;
@@ -61,7 +66,7 @@ img {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   text-decoration: none;
 }
 
@@ -113,7 +118,7 @@ p {
   letter-spacing: 0.14em;
   font-size: 0.76rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-bottom: 16px;
 }
 
@@ -267,7 +272,7 @@ p {
 }
 
 .nav-links a.active {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-weight: 700;
 }
 
@@ -491,7 +496,7 @@ p {
 
 .price-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 28px;
   margin-top: 48px;
 }
